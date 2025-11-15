@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -41,6 +42,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-system-primary-black-color: oklch(0.2672 0.0086 255.58);
+  --color-system-secondary-hover-black-color: oklch(0.3167 0.0076 264.46);
+  --color-system-secondary-active-black-color: oklch(0.3167 0.0076 264.46 / 80%);
+  --color-system-text-color: oklch(1 0 0 / 60%);
 }
 
 :root {
