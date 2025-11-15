@@ -24,10 +24,10 @@ export default function Header() {
         <div className="flex items-center space-x-4 shrink-0">
           {/* Logo/Brand */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-black rounded-md flex items-center justify-center">
-              <span className="text-white font-bold text-sm">CE</span>
+            <div className="w-8 h-8 bg-system-secondary-hover-black-color rounded-md flex items-center justify-center">
+              <span className="text-system-text-color font-bold text-sm">CE</span>
             </div>
-            <span className="text-system-text-color font-semibold text-lg hidden sm:block">Canvas Editor</span>
+            <span className="text- font-semibold text-lg hidden sm:block">Canvas Editor</span>
             <span className="text-system-text-color font-semibold text-lg sm:hidden"></span>
           </div>
 
@@ -40,13 +40,13 @@ export default function Header() {
                 <ChevronDownIcon className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-48">
-              <DropdownMenuItem>
-                <FileIcon className="h-4 w-4 mr-2" />
+            <DropdownMenuContent align="start" className="w-48 bg-system-secondary-hover-black-color border-none">
+              <DropdownMenuItem className='focus:bg-system-primary-black-color text-system-text-color!'>
+                <FileIcon className="h-4 w-4 mr-2 text-system-text-color!" />
                 New File
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <FolderOpenIcon className="h-4 w-4 mr-2" />
+              <DropdownMenuItem className='focus:bg-system-primary-black-color text-system-text-color!'>
+                <FolderOpenIcon className="h-4 w-4 mr-2 text-system-text-color!" />
                 Open
               </DropdownMenuItem>
             </DropdownMenuContent>
