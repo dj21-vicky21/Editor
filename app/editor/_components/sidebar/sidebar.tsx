@@ -59,7 +59,7 @@ export default function Sidebar() {
                 onClick={() => togglePanel(item.id)}
                 className={cn(
                     "w-full h-18 text-gray-400 hover:text-white hover:bg-transparent transition-all duration-200 relative z-10 rounded-none flex flex-col",
-                    activeItem === item.id && " text-white bg-gradient-to-r from-transparent to-system-secondary-hover-black-color"
+                    activeItem === item.id && " text-white bg-linear-to-r from-transparent to-system-secondary-hover-black-color"
                 )}
                 >
                 {item.icon}

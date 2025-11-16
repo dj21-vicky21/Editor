@@ -125,7 +125,7 @@ const Canvas: React.FC<CanvasProps> = ({ className = "" }) => {
         //   height: containerHeight
         // });
       }
-    }, 300); // Match sidebar transition duration
+    }, 320); // Match sidebar transition duration
 
     return () => clearTimeout(timeoutId);
   }, [isOpen, setCanvasDimensions, setWorkspaceCanvasDimensions]); // Listen to sidebar state

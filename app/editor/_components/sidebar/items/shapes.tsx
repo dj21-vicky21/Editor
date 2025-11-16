@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
 import React from 'react'
 import useCanvasStore from '@/store/canvas'
+import { cn } from '@/lib/utils';
 
 function Shapes() {
   // Get canvas actions from Zustand store
@@ -8,7 +8,8 @@ function Shapes() {
     addObject, 
     createRect, 
     createCircle, 
-    isCanvasReady 
+    isCanvasReady,
+    createTriangle,
   } = useCanvasStore();
 
   // Handler functions
@@ -16,7 +17,9 @@ function Shapes() {
     if (!isCanvasReady) return;
     
     const rect = createRect({
-      strokeWidth: 1,
+        strokeWidth: 2,
+        stroke: '#000',
+        fill: 'transparent',
     });
     
     addObject(rect);
@@ -26,7 +29,9 @@ function Shapes() {
     if (!isCanvasReady) return;
     
     const circle = createCircle({
-      strokeWidth: 1,
+        strokeWidth: 2,
+        stroke: '#000',
+        fill: 'transparent',
     });
     
     addObject(circle);
@@ -38,12 +43,24 @@ function Shapes() {
     const square = createRect({
       width: 80,
       height: 80,
-      strokeWidth: 1,
-      rx: 8,
-      ry: 8,
+      strokeWidth: 2,
+      stroke: '#000',
+      fill: 'transparent',
     });
     
     addObject(square);
+  };
+
+  const handleAddTriangle = () => {
+    if (!isCanvasReady) return;
+    
+    const triangle = createTriangle({
+      strokeWidth: 2,
+      stroke: '#000',
+      fill: 'transparent',
+    });
+    
+    addObject(triangle);
   };
 
   return (
@@ -75,6 +92,18 @@ function Shapes() {
             title="Circle"
           >
             <div className="w-12 h-12 border-2 border-white rounded-full"></div>
+          </button>
+
+          <button 
+            onClick={() => handleAddTriangle()}
+            className="relative aspect-square rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50"
+            disabled={!isCanvasReady}
+            title="Triangle"
+          >
+            <div className={cn("w-0 h-0 border-l-35 border-l-transparent border-b-60 border-b-white border-r-35 border-r-transparent flex items-center justify-center",
+                "before:content-[''] before:absolute before:top-[17px] before:left-[11px] before:w-0 before:h-0 before:border-l-33 before:border-l-transparent before:border-b-55 before:border-b-system-secondary-hover-black-color before:border-r-33 before:border-r-transparent"
+            )}>
+                    </div>
           </button>
         </div>
       </div>
