@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  TypeIcon,
+    SquareIcon,
   XIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Text from "./items/Text";
+import Shapes from "./items/shapes";
+import useSidebarStore from "@/store/sidebar"; // ADD THIS LINE
 
 interface SidebarItem {
   id: string;
@@ -18,22 +19,26 @@ interface SidebarItem {
 
 const sidebarItems: SidebarItem[] = [
   {
-    id: "text",
-    icon: <TypeIcon className="w-5 h-5" />,
-    label: "Text",
-    content: <Text />,
-  }
+    id: "shapes",
+    icon: <SquareIcon className="w-5 h-5" />,
+    label: "Shapes",
+    content: <Shapes />,
+  },
 ];
 
 export default function Sidebar() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const { setIsOpen } = useSidebarStore(); // ADD THIS LINE
 
   const togglePanel = (itemId: string) => {
-    setActiveItem(activeItem === itemId ? null : itemId);
+    const newActiveItem = activeItem === itemId ? null : itemId;
+    setActiveItem(newActiveItem);
+    setIsOpen(newActiveItem !== null); // ADD THIS LINE
   };
 
   const closePanel = () => {
     setActiveItem(null);
+    setIsOpen(false); // ADD THIS LINE
   };
 
   return (
@@ -69,7 +74,7 @@ export default function Sidebar() {
       <div
         className={cn(
           "bg-system-primary-black-color transition-all duration-300 ease-in-out overflow-hidden",
-          activeItem ? "w-80" : "w-0"
+          activeItem ? "w-80 pr-2 pb-2" : "w-0"
         )}
       >
         <div className="bg-system-secondary-hover-black-color h-full rounded-xl">
